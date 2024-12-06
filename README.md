@@ -1,28 +1,54 @@
-# Expense
+# Expense Tracker Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+## Overview
 
-## Development server
+This is the frontend for the **Expense Tracker** web application, built with **Angular 18**. It allows users to track their expenses, categorize them, set a monthly budget, and receive alerts when they exceed the budget.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- **Add Expense**: Users can add expenses with details like amount, category, and description.
+- **View Expenses**: Display a list of expenses and their details.
+- **Delete Expense**: Users can delete expenses they no longer need.
+- **Categorize Expenses**: Expenses can be categorized (e.g., Food, Transport, Entertainment).
+- **Set Monthly Budget**: Users can set and view their monthly budget.
+- **Budget Alerts**: Users are notified when their total expenses exceed the set budget.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technologies
 
-## Build
+- **Angular 18**: Frontend framework.
+- **Bootstrap/Tailwind CSS**: For styling and responsive layout.
+- **RxJS**: For handling asynchronous operations.
+- **JWT Authentication**: For securing the user’s session.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Setup and Installation
 
-## Running unit tests
+### Prerequisites
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Install **Node.js** and **npm**: [Download Node.js](https://nodejs.org/).
+- Install **Angular CLI**: 
+  ```bash
+  npm install -g @angular/cli
+Installation Steps
+Clone the repository:
 
-## Running end-to-end tests
+bash
+Copy code
+git clone https://github.com/your-username/expense-tracker-frontend.git
+Navigate to the project folder:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+bash
+Copy code
+cd expense-tracker-frontend
+Install the required dependencies:
 
-## Further help
+bash
+Copy code
+npm install
+Update the environment.ts file with the backend API URL (e.g., http://localhost:5000).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-"# Expense-Tracker-with-Budget-Alerts"  git init
+Run the application:
+
+bash
+Copy code
+ng serve
+The frontend will be running on http://localhost:4200.
