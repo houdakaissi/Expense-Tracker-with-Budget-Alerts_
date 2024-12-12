@@ -1,0 +1,78 @@
+<!-- Navbar with Add Expense button -->
+<nav class="navbar">
+    <ul>
+      <li><button style="background-color:blue" (click)="openForm()">Add Expense</button></li>
+    </ul>
+  </nav>
+  <!-- Budget Exceeded Notification -->
+<div *ngIf="budgetExceeded" class="budget-warning">
+    <p style="color: red; font-weight: bold;">Warning: Your total expenses exceed the monthly budget!</p>
+  </div>
+  
+  <!-- Display the expense form as a modal/prompt -->
+  <div *ngIf="showForm" class="modal">
+    <div class="modal-content">
+      <h2>{{ selectedExpense ? 'Edit Expense' : 'Add Expense' }}</h2>
+      <form (ngSubmit)="onSubmit()">
+        <!-- Expense Details -->
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input type="text" id="description" [(ngModel)]="expense.description" name="description" required />
+        </div>
+  
+        <div class="form-group">
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" [(ngModel)]="expense.amount" name="amount" required />
+        </div>
+  
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <input type="text" id="category" [(ngModel)]="expense.category" name="category" required />
+        </div>
+  
+        <div class="form-group">
+          <label for="date">Date:</label>
+          <input type="datetime-local" id="date" [(ngModel)]="expense.date" name="date" required />
+        </div>
+  
+        <div class="form-group">
+          <label for="userId">User ID:</label>
+          <input type="number" id="userId" [(ngModel)]="expense.userId" name="userId" required />
+        </div>
+  
+        <div class="form-actions">
+          <button type="submit">{{ selectedExpense ? 'Update Expense' : 'Add Expense' }}</button>
+          <button type="button" (click)="closeForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Display Expenses Table -->
+  <div *ngIf="loading">Loading expenses...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  
+  <table *ngIf="!loading && expenses.length > 0">
+    <thead>
+      <tr>
+        <th>Expense Name</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let expense of expenses">
+        <td>{{ expense.description }}</td>
+        <td>{{ expense.amount | currency }}</td>
+        <td>{{ expense.category }}</td>
+        <td>{{ expense.date | date:'shortDate' }}</td>
+        <td>
+          <button (click)="editExpense(expense)">Edit</button>
+          <button (click)="deleteExpense(expense.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
